@@ -1,7 +1,7 @@
 # Material Color Wheel Demo
 
 ### Description:
-This is a color selection control built for use with the Material Design in XAML Toolkit. It is based on Google's CSS customizer for their Material Design Lite framework.
+This is a color selection control built for use with the [Material Design in XAML Toolkit.](https://github.com/ButchersBoy/MaterialDesignInXamlToolkit) It is based on Google's CSS customizer for their Material Design Lite framework.
 
 ### Screenshots:
 ![Animated GIF](https://i.imgsafe.org/2c300059ae.gif)
@@ -15,6 +15,6 @@ This is a color selection control built for use with the Material Design in XAML
 * When you click a color the primary color will change. When you click the second color the accent color will change.
 
 ### Credits
-Thank you to James Willock for creating the Material Design in XAML Toolkit.  
+Thank you to [ButchersBoy](https://github.com/ButchersBoy) for creating the Material Design in XAML Toolkit.  
 Thank you to Google for releasing the Material Design standard.  
 [Google's CSS Customizer](https://getmdl.io/customize/index.html)
