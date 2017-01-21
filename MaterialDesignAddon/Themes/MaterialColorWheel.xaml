@@ -1,0 +1,836 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:MaterialDesignAddon.Controls">
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto-Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="ToolTipTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto-Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+    <Style x:Key="ColorWheelToolTip" TargetType="{x:Type ToolTip}">
+        <Setter Property="FontFamily" Value="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto-Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="MaxWidth" Value="170" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToolTip}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="ToolTipOpenStoryboard">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ToolTipBorder" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                <SplineDoubleKeyFrame KeySpline="0.4,0,0.2,1"
+                                                      KeyTime="0"
+                                                      Value="0" />
+                                <SplineDoubleKeyFrame KeySpline="0.4,0,0.2,1"
+                                                      KeyTime="0:0:0.2"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ToolTipBorder" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                <SplineDoubleKeyFrame KeySpline="0.4,0,0.2,1"
+                                                      KeyTime="0"
+                                                      Value="0" />
+                                <SplineDoubleKeyFrame KeySpline="0.4,0,0.2,1"
+                                                      KeyTime="0:0:0.2"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border x:Name="ToolTipBorder"
+                            Background="#E5616161"
+                            BorderThickness="2"
+                            CornerRadius="5"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <ContentPresenter Margin="7,3"
+                                          TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto-Bold"
+                                          TextElement.FontSize="14"
+                                          TextElement.Foreground="White" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource ToolTipOpenStoryboard}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="MaterialColorWheelTemplate" TargetType="{x:Type controls:MaterialColorWheel}">
+        <ControlTemplate.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontFamily" Value="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto-Bold" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+        </ControlTemplate.Resources>
+        <Viewbox Width="{TemplateBinding Width}"
+                             Height="{TemplateBinding Height}"
+                             Stretch="Uniform">
+            <Canvas x:Name="MaterialWheelLayoutRoot"
+                                Width="650"
+                                Height="650">
+                <Canvas x:Name="MaterialWheel">
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="325" Y="325"/>
+                    </Canvas.RenderTransform>
+                    <Canvas x:Name="PART_CyanCanvas"
+                            ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Cyan" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="0"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="CyanPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="CyanOuter" FillRule="NonZero" Fill="#00BCD4"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="CyanInner" FillRule="NonZero" Fill="#0097A7"/>
+                        </Canvas>
+                        <Path x:Name="PART_CyanSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Cyan1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Cyan1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}"/>
+                        </Canvas>
+                        <Canvas x:Name="PART_Cyan2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Cyan2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}"/>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_TealCanvas"
+                            ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Teal" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="18.94736842105263"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="TealPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="TealOuter" FillRule="NonZero" Fill="#009688"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="TealInner" FillRule="NonZero" Fill="#00796B"/>
+                        </Canvas>
+                        <Path x:Name="PART_TealSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Teal1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Teal1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-18.94736842105263"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Teal2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Teal2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-18.94736842105263"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_GreenCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Green" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="37.89473684210526"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="GreenPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="GreenOuter" FillRule="NonZero" Fill="#4CAF50"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="GreenInner" FillRule="NonZero" Fill="#388E3C"/>
+                        </Canvas>
+                        <Path x:Name="PART_GreenSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Green1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Green1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-37.89473684210526"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Green2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Green2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-37.89473684210526"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_LightGreenCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Green" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="56.84210526315789"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="LightGreenPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LimeGreenOuter" FillRule="NonZero" Fill="#8BC34A"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LimeGreenInner" FillRule="NonZero" Fill="#689F38"/>
+                        </Canvas>
+                        <Path x:Name="PART_LightGreenSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_LightGreen1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="LightGreen1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-56.84210526315789"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_LightGreen2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="LightGreen2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-56.84210526315789"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_LimeCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Lime" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="75.78947368421052"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="LimePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LimeOuter" FillRule="NonZero" Fill="#CDDC39"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LimeInner" FillRule="NonZero" Fill="#AFB42B"/>
+                        </Canvas>
+                        <Path x:Name="PART_LimeSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Lime1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Lime1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-75.78947368421052"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Lime2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Lime2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-75.78947368421052"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_YellowCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Yellow" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="94.73684210526315"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="YellowPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="YellowOuter" FillRule="NonZero" Fill="#FFEB3B"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="YellowInner" FillRule="NonZero" Fill="#FBC02D"/>
+                        </Canvas>
+                        <Path x:Name="PART_YellowSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Yellow1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Yellow1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-94.73684210526315"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Yellow2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Yellow2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-94.73684210526315"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_AmberCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Amber" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="113.68421052631578"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="AmberPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="AmberOuter" FillRule="NonZero" Fill="#FFC107"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="AmberInner" FillRule="NonZero" Fill="#FFA000"/>
+                        </Canvas>
+                        <Path x:Name="PART_AmberSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Amber1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Amber1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-113.68421052631578"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Amber2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Amber2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-113.68421052631578"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_OrangeCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Orange" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="132.6315789473684"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="OrangePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="OrangeOuter" FillRule="NonZero" Fill="#FF9800"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="OrangeInner" FillRule="NonZero" Fill="#F57C00"/>
+                        </Canvas>
+                        <Path x:Name="PART_OrangeSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Orange1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Orange1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-132.6315789473684"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Orange2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Orange2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-132.6315789473684"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_BrownCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Brown" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="151.57894736842104"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="BrownPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BrownOuter" FillRule="NonZero" Fill="#795548"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BrownInner" FillRule="NonZero" Fill="#5D4037"/>
+                        </Canvas>
+                        <Path x:Name="PART_BrownSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Brown1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Brown1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-151.57894736842104"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Brown2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Brown2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-151.57894736842104"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_BlueGreyCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Blue Grey" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="170.52631578947367"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="BlueGreyPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BlueGreyOuter" FillRule="NonZero" Fill="#607D8B"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BlueGreyInner" FillRule="NonZero" Fill="#455A64"/>
+                        </Canvas>
+                        <Path x:Name="PART_BlueGreySelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_BlueGrey1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="BlueGrey1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-170.52631578947367"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_BlueGrey2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="BlueGrey2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-170.52631578947367"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_GreyCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Grey" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="189.4736842105263"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="GreyPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="GreyOuter" FillRule="NonZero" Fill="{TemplateBinding SelectorColor}"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="GreyInner" FillRule="NonZero" Fill="#616161"/>
+                        </Canvas>
+                        <Path x:Name="PART_GreySelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Grey1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Grey1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-189.4736842105263"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Grey2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Grey2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-189.4736842105263"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_DeepOrangeCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Deep Orange" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="208.42105263157893"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="DeepOrangePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="DeepOrangeOuter" FillRule="NonZero" Fill="#FF5722"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="DeepOrangeInner" FillRule="NonZero" Fill="#E64A19"/>
+                        </Canvas>
+                        <Path x:Name="PART_DeepOrangeSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_DeepOrange1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="DeepOrange1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-208.42105263157893"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_DeepOrange2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="DeepOrange2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-208.42105263157893"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_RedCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Red" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="227.36842105263156"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="RedPolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="RedOuter" FillRule="NonZero" Fill="#F44336"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="RedInner" FillRule="NonZero" Fill="#D32F2F"/>
+                        </Canvas>
+                        <Path x:Name="PART_RedSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Red1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Red1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-227.36842105263156"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Red2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Red2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-227.36842105263156"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_PurpleCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Purple" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="265.2631578947368"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="PurplePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="PurpleOuter" FillRule="NonZero" Fill="#9C27B0"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="PurpleInner" FillRule="NonZero" Fill="#7B1FA2"/>
+                        </Canvas>
+                        <Path x:Name="PART_PurpleSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Purple1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Purple1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-265.2631578947368"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Purple2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Purple2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-265.2631578947368"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_DeepPurpleCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Deep Purple" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="284.2105263157895"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="DeepPurplePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="DeepPurpleOuter" FillRule="NonZero" Fill="#673AB7"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="DeepPurpleInner" FillRule="NonZero" Fill="#512DA8"/>
+                        </Canvas>
+                        <Path x:Name="PART_DeepPurpleSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_DeepPurple1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="DeepPurple1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-284.2105263157895"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_DeepPurple2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="DeepPurple2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-284.2105263157895"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_BlueCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Blue" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="322.1052631578947"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="BluePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BlueOuter" FillRule="NonZero" Fill="#2196F3"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BlueInner" FillRule="NonZero" Fill="#1976D2"/>
+                        </Canvas>
+                        <Path x:Name="PART_BlueSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Blue1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Blue1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-322.1052631578947"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Blue2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Blue2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-322.1052631578947"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_LightBlueCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Light Blue" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="341.05263157894734"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="LightBluePolys">
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LightBlueOuter" FillRule="NonZero" Fill="#03A9F4"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LightBlueInner" FillRule="NonZero" Fill="#0288D1"/>
+                        </Canvas>
+                        <Path x:Name="PART_LightBlueSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_LightBlue1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="LightBlue1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-341.05263157894734"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_LightBlue2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="LightBlue2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-341.05263157894734"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_IndigoCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Indigo" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="303.1578947368421"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="IndigoPolys">
+                            <!-- Apply drop shadow to canvas -->
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="IndigoOuter" FillRule="NonZero" Fill="#3F51B5"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="IndigoInner" FillRule="NonZero" Fill="#303F9F"/>
+                        </Canvas>
+                        <Path x:Name="PART_IndigoSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Indigo1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Indigo1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-303.1578947368421"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Indigo2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Indigo2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-303.1578947368421"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                    <Canvas x:Name="PART_PinkCanvas" ToolTipService.InitialShowDelay="250">
+                        <Canvas.ToolTip>
+                            <ToolTip Style="{StaticResource ColorWheelToolTip}">
+                                <TextBlock Text="Pink" Style="{StaticResource ToolTipTextBlock}"/>
+                            </ToolTip>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <RotateTransform Angle="246.3157894736842"/>
+                        </Canvas.RenderTransform>
+                        <Canvas x:Name="PinkPolys">
+                            <!-- Apply drop shadow to canvas -->
+                            <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="PinkOuter" FillRule="NonZero" Fill="#E91E63"/>
+                            <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="PinkInner" FillRule="NonZero" Fill="#C2185B"/>
+                        </Canvas>
+                        <Path x:Name="PART_PinkSelector" Fill="{TemplateBinding SelectorColor}" Visibility="Collapsed">
+                            <Path.Data>
+                                <PathGeometry Figures=" M 40.58743365058543 -243.2271552125793 L 24.852895361930592 -273.4550707222589 A 23.866215590706414 23.866215590706414 18.94736842105263 1 1 65.28441937535095 -266.70824265179726 z " FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Canvas x:Name="PART_Pink1Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Pink1" Text="1" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-246.3157894736842"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <Canvas x:Name="PART_Pink2Canvas" Visibility="Collapsed">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="47.0814230346791" Y="-282.143500046592"/>
+                            </Canvas.RenderTransform>
+                            <TextBlock FontSize="12" x:Name="Pink2" Text="2" Foreground="{TemplateBinding SelectorForegroundColor}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="-246.3157894736842"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                    </Canvas>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type controls:MaterialColorWheel}">
+        <Setter Property="Template" Value="{StaticResource MaterialColorWheelTemplate}"/>
+    </Style>
+
+</ResourceDictionary>
