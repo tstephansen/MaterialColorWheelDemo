@@ -79,7 +79,7 @@
         </ControlTemplate.Resources>
         <Viewbox Width="{TemplateBinding Width}"
                              Height="{TemplateBinding Height}"
-                             Stretch="Uniform">
+                             Stretch="{TemplateBinding Stretch}">
             <Canvas x:Name="MaterialWheelLayoutRoot"
                                 Width="650"
                                 Height="650">

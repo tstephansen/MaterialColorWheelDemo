@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 using MaterialDesignAddon.Helpers;
 using MaterialDesignThemes.Wpf;
@@ -263,6 +264,7 @@ namespace MaterialDesignAddon.Controls
             }
             if (!_isFirstColorSelected)
             {
+                DisableAllEffects();
                 var selector = canvas.FindChild<Path>(selectorName);
                 if (selector != null)
                     selector.Visibility = Visibility.Visible;
@@ -278,6 +280,16 @@ namespace MaterialDesignAddon.Controls
                     _blueGreySelected = true;
                 if (upperColorName == "BrownSelected")
                     _brownSelected = true;
+                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
+                selectedCanvas.Effect = new DropShadowEffect
+                {
+                    BlurRadius = 14,
+                    Color = Color.FromArgb(153,0,0,0),
+                    Direction = 270,
+                    Opacity = 0.42,
+                    RenderingBias = RenderingBias.Performance,
+                    ShadowDepth = 4.5
+                };
                 DisableInvalidColorChoices(upperColorName);
             }
             else
@@ -294,6 +306,16 @@ namespace MaterialDesignAddon.Controls
                 //if (numberTwoCanvas != null)
                 //    numberTwoCanvas.Visibility = Visibility.Visible;
                 _isSecondColorSelected = true;
+                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
+                selectedCanvas.Effect = new DropShadowEffect
+                {
+                    BlurRadius = 14,
+                    Color = Color.FromArgb(153, 0, 0, 0),
+                    Direction = 270,
+                    Opacity = 0.42,
+                    RenderingBias = RenderingBias.Performance,
+                    ShadowDepth = 4.5
+                };
                 new PaletteHelper().ReplaceAccentColor(colorName);
                 EnableDisabledColorChoices();
             }
@@ -324,6 +346,7 @@ namespace MaterialDesignAddon.Controls
             }
             if (!_isFirstColorSelected)
             {
+                DisableAllEffects();
                 var selector = canvas.FindChild<Path>(selectorName);
                 if (selector != null)
                     selector.Visibility = Visibility.Visible;
@@ -339,6 +362,16 @@ namespace MaterialDesignAddon.Controls
                     _blueGreySelected = true;
                 if (upperColorName == "BrownSelected")
                     _brownSelected = true;
+                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
+                selectedCanvas.Effect = new DropShadowEffect
+                {
+                    BlurRadius = 14,
+                    Color = Color.FromArgb(153, 0, 0, 0),
+                    Direction = 270,
+                    Opacity = 0.42,
+                    RenderingBias = RenderingBias.Performance,
+                    ShadowDepth = 4.5
+                };
                 DisableInvalidColorChoices(upperColorName);
             }
         }
@@ -355,6 +388,53 @@ namespace MaterialDesignAddon.Controls
             DisableBlueGrey();
             DisableBrown();
             DisableCurrentColor(color);
+        }
+
+        private Canvas GetColorCanvas(string color)
+        {
+            switch (color)
+            {
+                default:
+                    return null;
+                case "Cyan":
+                    return _cyanCanvas;
+                case "Teal":
+                    return _tealCanvas;
+                case "Green":
+                    return _greenCanvas;
+                case "LightGreen":
+                    return _lightGreenCanvas;
+                case "Lime":
+                    return _limeCanvas;
+                case "Yellow":
+                    return _yellowCanvas;
+                case "Amber":
+                    return _amberCanvas;
+                case "Orange":
+                    return _orangeCanvas;
+                case "Brown":
+                    return _brownCanvas;
+                case "BlueGrey":
+                    return _blueGreyCanvas;
+                case "Grey":
+                    return _greyCanvas;
+                case "DeepOrange":
+                    return _deepOrangeCanvas;
+                case "Red":
+                    return _redCanvas;
+                case "Purple":
+                    return _purpleCanvas;
+                case "DeepPurple":
+                    return _deepPurpleCanvas;
+                case "Blue":
+                    return _blueCanvas;
+                case "LightBlue":
+                    return _lightBlueCanvas;
+                case "Indigo":
+                    return _indigoCanvas;
+                case "Pink":
+                    return _pinkCanvas;
+            }
         }
 
         /// <summary>
@@ -422,7 +502,6 @@ namespace MaterialDesignAddon.Controls
                 case "Pink":
                     _pinkCanvas.IsEnabled = false;
                     break;
-
             }
         }
 
@@ -518,6 +597,32 @@ namespace MaterialDesignAddon.Controls
             _lightBlueCanvas.IsEnabled = true;
             _indigoCanvas.IsEnabled = true;
             _pinkCanvas.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// Disables all effects.
+        /// </summary>
+        private void DisableAllEffects()
+        {
+            _cyanCanvas.Effect = null;
+            _tealCanvas.Effect = null;
+            _greenCanvas.Effect = null;
+            _lightGreenCanvas.Effect = null;
+            _limeCanvas.Effect = null;
+            _yellowCanvas.Effect = null;
+            _amberCanvas.Effect = null;
+            _orangeCanvas.Effect = null;
+            _brownCanvas.Effect = null;
+            _blueGreyCanvas.Effect = null;
+            _greyCanvas.Effect = null;
+            _deepOrangeCanvas.Effect = null;
+            _redCanvas.Effect = null;
+            _purpleCanvas.Effect = null;
+            _deepPurpleCanvas.Effect = null;
+            _blueCanvas.Effect = null;
+            _lightBlueCanvas.Effect = null;
+            _indigoCanvas.Effect = null;
+            _pinkCanvas.Effect = null;
         }
 
         /// <summary>
@@ -687,6 +792,15 @@ namespace MaterialDesignAddon.Controls
         {
             get { return (SolidColorBrush)GetValue(SelectorForegroundColorProperty); }
             set { SetValue(SelectorForegroundColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(
+            "Stretch", typeof(Stretch), typeof(MaterialColorWheel), new PropertyMetadata(default(Stretch)));
+
+        public Stretch Stretch
+        {
+            get { return (Stretch) GetValue(StretchProperty); }
+            set { SetValue(StretchProperty, value); }
         }
         #endregion
 
