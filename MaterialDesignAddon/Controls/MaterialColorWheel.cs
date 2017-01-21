@@ -1,6 +1,7 @@
 ﻿using MaterialDesignColors;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -356,7 +357,7 @@ namespace MaterialDesignAddon.Controls
             if (canvas == null)
                 throw new InvalidOperationException("Canvas can't be found.");
             var upperColorName = canvas.Name.Replace("PART_", "").Replace("Canvas", "");
-            var colorName = upperColorName.ToLower();
+            var colorName = upperColorName.ToLower(CultureInfo.InvariantCulture);
             var selectorName = $"PART_{upperColorName}Selector";
             var numberOneName = $"PART_{upperColorName}1Canvas";
             var numberTwoName = $"PART_{upperColorName}2Canvas";
@@ -420,7 +421,7 @@ namespace MaterialDesignAddon.Controls
             if (canvas == null)
                 throw new InvalidOperationException("Canvas can't be found.");
             var upperColorName = canvas.Name.Replace("PART_", "").Replace("Canvas", "");
-            var colorName = upperColorName.ToLower();
+            var colorName = upperColorName.ToLower(CultureInfo.InvariantCulture);
             var selectorName = $"PART_{upperColorName}Selector";
             var numberOneName = $"PART_{upperColorName}1Canvas";
             var numberTwoName = $"PART_{upperColorName}2Canvas";

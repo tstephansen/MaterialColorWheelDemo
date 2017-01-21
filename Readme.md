@@ -9,9 +9,10 @@ This is a color selection control built for use with the [Material Design in XAM
 ![](https://i.imgsafe.org/2aff0a3842.png)
 ![](https://i.imgsafe.org/2c0babc32b.png)
 
-### Use:
-* Add a reference to the MaterialDesignAddon dll and add the control to a usercontrol. The only tag that is required is:
-`<namespace:MaterialColorWheel/>`
+### Use (NuGet package coming soon):
+* Add a reference to the MaterialDesignAddon dll.
+* Add the `xmlns:addon="http://schemas.landmarkdevs.com/xaml"` namespace to the user control.
+* Add `<addon:MaterialColorWheel/>` where you want to use the control.
 * When you click a color the primary color will change. When you click the second color the accent color will change.
 
 ### Credits
