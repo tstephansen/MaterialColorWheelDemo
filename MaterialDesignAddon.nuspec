@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>MaterialDesignAddon</id>
+        <version>1.0.2</version>
+        <title>Material Color Wheel Addon</title>
+        <authors>Tim Stephansen</authors>
+        <owners>Tim Stephansen</owners>
+        <!-- License and project URLs provide links for the gallery -->
+        <licenseUrl>https://opensource.org/licenses/Apache-2.0</licenseUrl>
+        <projectUrl>https://github.com/tstephansen/MaterialColorWheelDemo</projectUrl>
+        <!-- The icon is used in Visual Studio's package manager UI -->
+        <iconUrl>http://github.com/tstephansen/MaterialColorWheelDemo/ColorWheelIcon.PNG</iconUrl>
+        <!-- If true, this value prompts the user to accept the license when
+             installing the package. -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <releaseNotes>Added support for .NET 4.5</releaseNotes>
+        <description>A color wheel for the Material Design in XAML Toolkit that is modeled after Google's Material Design Lite CSS Customizer.</description>
+        <copyright>Copyright ©2017 Tim Stephansen</copyright>
+        <!-- Tags appear in the gallery and can be used for tag searches -->
+        <tags>material design color wheel xaml</tags>
+        <!-- Dependencies are automatically installed when the package is installed -->
+        <dependencies>
+            <dependency id="MaterialDesignColors" version="1.1.3" />
+            <dependency id="MaterialDesignThemes" version="2.2.1.750" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="MaterialDesignAddon\bin\Release\MaterialDesignAddon.dll" target="lib\net45" />
+        <file src="MaterialDesignAddon\bin\Release\MaterialDesignAddon.pdb" target="lib\net45" />
+        <file src="MaterialDesignAddon\bin\Release\MaterialDesignAddon.XML" target="lib\net45" />
+    </files>
+</package>

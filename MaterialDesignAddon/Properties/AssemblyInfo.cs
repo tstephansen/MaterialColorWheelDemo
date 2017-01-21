@@ -9,11 +9,11 @@ using System.Windows.Markup;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MaterialDesignAddon")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Material Design Color Wheel for the Material Design in XAML Toolkit")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("LandmarkDevs")]
 [assembly: AssemblyProduct("MaterialDesignAddon")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: XmlnsDefinition("http://schemas.landmarkdevs.com/xaml", "MaterialDesignAddon.Controls")]
