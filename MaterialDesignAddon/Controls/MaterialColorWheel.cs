@@ -96,6 +96,25 @@ namespace MaterialDesignAddon.Controls
     [TemplatePart(Name = PART_LightBlue2Canvas, Type = typeof(Canvas))]
     [TemplatePart(Name = PART_Indigo2Canvas, Type = typeof(Canvas))]
     [TemplatePart(Name = PART_Pink2Canvas, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_CyanPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_TealPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_GreenPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_LightGreenPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_LimePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_YellowPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_AmberPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_OrangePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_BrownPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_BlueGreyPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_GreyPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_DeepOrangePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_RedPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_PurplePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_DeepPurplePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_BluePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_LightBluePolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_IndigoPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_PinkPolys, Type = typeof(Canvas))]
     public class MaterialColorWheel : Control
     {
         #region Initialization and Template
@@ -197,7 +216,92 @@ namespace MaterialDesignAddon.Controls
             _lightBlue2Canvas = GetTemplateChild(PART_LightBlue2Canvas) as Canvas;
             _indigo2Canvas = GetTemplateChild(PART_Indigo2Canvas) as Canvas;
             _pink2Canvas = GetTemplateChild(PART_Pink2Canvas) as Canvas;
+            _cyanPolys = GetTemplateChild(PART_CyanPolys) as Canvas;
+            _tealPolys = GetTemplateChild(PART_TealPolys) as Canvas;
+            _greenPolys = GetTemplateChild(PART_GreenPolys) as Canvas;
+            _lightGreenPolys = GetTemplateChild(PART_LightGreenPolys) as Canvas;
+            _limePolys = GetTemplateChild(PART_LimePolys) as Canvas;
+            _yellowPolys = GetTemplateChild(PART_YellowPolys) as Canvas;
+            _amberPolys = GetTemplateChild(PART_AmberPolys) as Canvas;
+            _orangePolys = GetTemplateChild(PART_OrangePolys) as Canvas;
+            _brownPolys = GetTemplateChild(PART_BrownPolys) as Canvas;
+            _blueGreyPolys = GetTemplateChild(PART_BlueGreyPolys) as Canvas;
+            _greyPolys = GetTemplateChild(PART_GreyPolys) as Canvas;
+            _deepOrangePolys = GetTemplateChild(PART_DeepOrangePolys) as Canvas;
+            _redPolys = GetTemplateChild(PART_RedPolys) as Canvas;
+            _purplePolys = GetTemplateChild(PART_PurplePolys) as Canvas;
+            _deepPurplePolys = GetTemplateChild(PART_DeepPurplePolys) as Canvas;
+            _bluePolys = GetTemplateChild(PART_BluePolys) as Canvas;
+            _lightBluePolys = GetTemplateChild(PART_LightBluePolys) as Canvas;
+            _indigoPolys = GetTemplateChild(PART_IndigoPolys) as Canvas;
+            _pinkPolys = GetTemplateChild(PART_PinkPolys) as Canvas;
 
+            _colorCanvases = new Dictionary<string, Canvas>
+            {
+                {"Cyan", _cyanCanvas},
+                {"Teal", _tealCanvas},
+                {"Green", _greenCanvas},
+                {"LightGreen", _lightGreenCanvas},
+                {"Lime", _limeCanvas},
+                {"Yellow", _yellowCanvas},
+                {"Amber", _amberCanvas},
+                {"Orange", _orangeCanvas},
+                {"Brown", _brownCanvas},
+                {"BlueGrey", _blueGreyCanvas},
+                {"Grey", _greyCanvas},
+                {"DeepOrange", _deepOrangeCanvas},
+                {"Red", _redCanvas},
+                {"Purple", _purpleCanvas},
+                {"DeepPurple", _deepPurpleCanvas},
+                {"Blue", _blueCanvas},
+                {"LightBlue", _lightBlueCanvas},
+                {"Indigo", _indigoCanvas},
+                {"Pink", _pinkCanvas}
+            };
+            _selectors = new Dictionary<string, Path>
+            {
+                { "Cyan", _cyanSelector},
+                { "Teal", _tealSelector},
+                { "Green", _greenSelector},
+                { "LightGreen", _lightGreenSelector},
+                { "Lime", _limeSelector},
+                { "Yellow", _yellowSelector},
+                { "Amber", _amberSelector},
+                { "Orange", _orangeSelector},
+                { "Brown", _brownSelector},
+                { "BlueGrey", _blueGreySelector},
+                { "Grey", _greySelector},
+                { "DeepOrange", _deepOrangeSelector},
+                { "Red", _redSelector},
+                { "Purple", _purpleSelector},
+                { "DeepPurple", _deepPurpleSelector},
+                { "Blue", _blueSelector},
+                { "LightBlue", _lightBlueSelector},
+                { "Indigo", _indigoSelector},
+                { "Pink", _pinkSelector}
+            };
+            _polygons = new Dictionary<string, Canvas>
+            {
+                { "Cyan", _cyanPolys},
+                { "Teal", _tealPolys},
+                { "Green", _greenPolys},
+                { "LightGreen", _lightGreenPolys},
+                { "Lime", _limePolys},
+                { "Yellow", _yellowPolys},
+                { "Amber", _amberPolys},
+                { "Orange", _orangePolys},
+                { "Brown", _brownPolys},
+                { "BlueGrey", _blueGreyPolys},
+                { "Grey", _greyPolys},
+                { "DeepOrange", _deepOrangePolys},
+                { "Red", _redPolys},
+                { "Purple", _purplePolys},
+                { "DeepPurple", _deepPurplePolys},
+                { "Blue", _bluePolys},
+                { "LightBlue", _lightBluePolys},
+                { "Indigo", _indigoPolys},
+                { "Pink", _pinkPolys}
+            };
             if (_cyanCanvas != null)
                 _cyanCanvas.PreviewMouseLeftButtonUp += UnrestrictedColorCanvas_PreviewMouseLeftButtonUp;
             if (_tealCanvas != null)
@@ -278,18 +382,9 @@ namespace MaterialDesignAddon.Controls
                     _greySelected = true;
                 if (upperColorName == "BlueGrey")
                     _blueGreySelected = true;
-                if (upperColorName == "BrownSelected")
+                if (upperColorName == "Brown")
                     _brownSelected = true;
-                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
-                selectedCanvas.Effect = new DropShadowEffect
-                {
-                    BlurRadius = 14,
-                    Color = Color.FromArgb(153,0,0,0),
-                    Direction = 270,
-                    Opacity = 0.42,
-                    RenderingBias = RenderingBias.Performance,
-                    ShadowDepth = 4.5
-                };
+                ApplyDropShadowEffect(upperColorName);
                 DisableInvalidColorChoices(upperColorName);
             }
             else
@@ -306,16 +401,7 @@ namespace MaterialDesignAddon.Controls
                 //if (numberTwoCanvas != null)
                 //    numberTwoCanvas.Visibility = Visibility.Visible;
                 _isSecondColorSelected = true;
-                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
-                selectedCanvas.Effect = new DropShadowEffect
-                {
-                    BlurRadius = 14,
-                    Color = Color.FromArgb(153, 0, 0, 0),
-                    Direction = 270,
-                    Opacity = 0.42,
-                    RenderingBias = RenderingBias.Performance,
-                    ShadowDepth = 4.5
-                };
+                ApplyDropShadowEffect(upperColorName);
                 new PaletteHelper().ReplaceAccentColor(colorName);
                 EnableDisabledColorChoices();
             }
@@ -360,18 +446,9 @@ namespace MaterialDesignAddon.Controls
                     _greySelected = true;
                 if (upperColorName == "BlueGrey")
                     _blueGreySelected = true;
-                if (upperColorName == "BrownSelected")
+                if (upperColorName == "Brown")
                     _brownSelected = true;
-                var selectedCanvas = GetColorCanvas(upperColorName) as UIElement;
-                selectedCanvas.Effect = new DropShadowEffect
-                {
-                    BlurRadius = 14,
-                    Color = Color.FromArgb(153, 0, 0, 0),
-                    Direction = 270,
-                    Opacity = 0.42,
-                    RenderingBias = RenderingBias.Performance,
-                    ShadowDepth = 4.5
-                };
+                ApplyDropShadowEffect(upperColorName);
                 DisableInvalidColorChoices(upperColorName);
             }
         }
@@ -390,51 +467,17 @@ namespace MaterialDesignAddon.Controls
             DisableCurrentColor(color);
         }
 
+
+        /// <summary>
+        /// Gets the canvas of the specified color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        /// <returns>Canvas.</returns>
         private Canvas GetColorCanvas(string color)
         {
-            switch (color)
-            {
-                default:
-                    return null;
-                case "Cyan":
-                    return _cyanCanvas;
-                case "Teal":
-                    return _tealCanvas;
-                case "Green":
-                    return _greenCanvas;
-                case "LightGreen":
-                    return _lightGreenCanvas;
-                case "Lime":
-                    return _limeCanvas;
-                case "Yellow":
-                    return _yellowCanvas;
-                case "Amber":
-                    return _amberCanvas;
-                case "Orange":
-                    return _orangeCanvas;
-                case "Brown":
-                    return _brownCanvas;
-                case "BlueGrey":
-                    return _blueGreyCanvas;
-                case "Grey":
-                    return _greyCanvas;
-                case "DeepOrange":
-                    return _deepOrangeCanvas;
-                case "Red":
-                    return _redCanvas;
-                case "Purple":
-                    return _purpleCanvas;
-                case "DeepPurple":
-                    return _deepPurpleCanvas;
-                case "Blue":
-                    return _blueCanvas;
-                case "LightBlue":
-                    return _lightBlueCanvas;
-                case "Indigo":
-                    return _indigoCanvas;
-                case "Pink":
-                    return _pinkCanvas;
-            }
+            Canvas canvas;
+            _colorCanvases.TryGetValue(color, out canvas);
+            return canvas;
         }
 
         /// <summary>
@@ -443,66 +486,9 @@ namespace MaterialDesignAddon.Controls
         /// <param name="color">The color.</param>
         private void DisableCurrentColor(string color)
         {
-            switch (color)
-            {
-                case "Cyan":
-                    _cyanCanvas.IsEnabled = false;
-                    break;
-                case "Teal":
-                    _tealCanvas.IsEnabled = false;
-                    break;
-                case "Green":
-                    _greenCanvas.IsEnabled = false;
-                    break;
-                case "LightGreen":
-                    _lightGreenCanvas.IsEnabled = false;
-                    break;
-                case "Lime":
-                    _limeCanvas.IsEnabled = false;
-                    break;
-                case "Yellow":
-                    _yellowCanvas.IsEnabled = false;
-                    break;
-                case "Amber":
-                    _amberCanvas.IsEnabled = false;
-                    break;
-                case "Orange":
-                    _orangeCanvas.IsEnabled = false;
-                    break;
-                case "Brown":
-                    _brownCanvas.IsEnabled = false;
-                    break;
-                case "BlueGrey":
-                    _blueGreyCanvas.IsEnabled = false;
-                    break;
-                case "Grey":
-                    _greyCanvas.IsEnabled = false;
-                    break;
-                case "DeepOrange":
-                    _deepOrangeCanvas.IsEnabled = false;
-                    break;
-                case "Red":
-                    _redCanvas.IsEnabled = false;
-                    break;
-                case "Purple":
-                    _purpleCanvas.IsEnabled = false;
-                    break;
-                case "DeepPurple":
-                    _deepPurpleCanvas.IsEnabled = false;
-                    break;
-                case "Blue":
-                    _blueCanvas.IsEnabled = false;
-                    break;
-                case "LightBlue":
-                    _lightBlueCanvas.IsEnabled = false;
-                    break;
-                case "Indigo":
-                    _indigoCanvas.IsEnabled = false;
-                    break;
-                case "Pink":
-                    _pinkCanvas.IsEnabled = false;
-                    break;
-            }
+            var canvas = GetColorCanvas(color);
+            if (canvas != null)
+                canvas.IsEnabled = false;
         }
 
         /// <summary>
@@ -513,13 +499,10 @@ namespace MaterialDesignAddon.Controls
             if (_greySelected)
                 return;
             _greyCanvas.IsEnabled = false;
-            var greyPolys = _greyCanvas.FindChild<Canvas>("GreyPolys");
-            if (greyPolys == null)
-                return;
-            var greyOuter = greyPolys.FindChild<Polygon>("GreyOuter");
+            var greyOuter = _greyPolys.FindChild<Polygon>("GreyOuter");
             if (greyOuter != null)
                 greyOuter.Fill = new SolidColorBrush(Color.FromRgb(239, 239, 239));
-            var greyInner = greyPolys.FindChild<Polygon>("GreyInner");
+            var greyInner = _greyPolys.FindChild<Polygon>("GreyInner");
             if (greyInner != null)
                 greyInner.Fill = new SolidColorBrush(Color.FromRgb(232, 232, 232));
         }
@@ -532,13 +515,10 @@ namespace MaterialDesignAddon.Controls
             if (_blueGreySelected)
                 return;
             _blueGreyCanvas.IsEnabled = false;
-            var blueGreyPolys = _blueGreyCanvas.FindChild<Canvas>("BlueGreyPolys");
-            if (blueGreyPolys == null)
-                return;
-            var greyOuter = blueGreyPolys.FindChild<Polygon>("BlueGreyOuter");
+            var greyOuter = _blueGreyPolys.FindChild<Polygon>("BlueGreyOuter");
             if (greyOuter != null)
                 greyOuter.Fill = new SolidColorBrush(Color.FromRgb(232, 235, 237));
-            var greyInner = blueGreyPolys.FindChild<Polygon>("BlueGreyInner");
+            var greyInner = _blueGreyPolys.FindChild<Polygon>("BlueGreyInner");
             if (greyInner != null)
                 greyInner.Fill = new SolidColorBrush(Color.FromRgb(228, 231, 232));
         }
@@ -551,13 +531,10 @@ namespace MaterialDesignAddon.Controls
             if (_brownSelected)
                 return;
             _brownCanvas.IsEnabled = false;
-            var brownPolys = _brownCanvas.FindChild<Canvas>("BrownPolys");
-            if (brownPolys == null)
-                return;
-            var brownOuter = brownPolys.FindChild<Polygon>("BrownOuter");
+            var brownOuter = _brownPolys.FindChild<Polygon>("BrownOuter");
             if (brownOuter != null)
                 brownOuter.Fill = new SolidColorBrush(Color.FromRgb(235, 230, 229));
-            var brownInner = brownPolys.FindChild<Polygon>("BrownInner");
+            var brownInner = _brownPolys.FindChild<Polygon>("BrownInner");
             if (brownInner != null)
                 brownInner.Fill = new SolidColorBrush(Color.FromRgb(231, 228, 227));
         }
@@ -578,25 +555,10 @@ namespace MaterialDesignAddon.Controls
         /// </summary>
         private void EnableAllColors()
         {
-            _cyanCanvas.IsEnabled = true;
-            _tealCanvas.IsEnabled = true;
-            _greenCanvas.IsEnabled = true;
-            _lightGreenCanvas.IsEnabled = true;
-            _limeCanvas.IsEnabled = true;
-            _yellowCanvas.IsEnabled = true;
-            _amberCanvas.IsEnabled = true;
-            _orangeCanvas.IsEnabled = true;
-            _brownCanvas.IsEnabled = true;
-            _blueGreyCanvas.IsEnabled = true;
-            _greyCanvas.IsEnabled = true;
-            _deepOrangeCanvas.IsEnabled = true;
-            _redCanvas.IsEnabled = true;
-            _purpleCanvas.IsEnabled = true;
-            _deepPurpleCanvas.IsEnabled = true;
-            _blueCanvas.IsEnabled = true;
-            _lightBlueCanvas.IsEnabled = true;
-            _indigoCanvas.IsEnabled = true;
-            _pinkCanvas.IsEnabled = true;
+            foreach (var o in _colorCanvases)
+            {
+                o.Value.IsEnabled = true;
+            }
         }
 
         /// <summary>
@@ -604,25 +566,10 @@ namespace MaterialDesignAddon.Controls
         /// </summary>
         private void DisableAllEffects()
         {
-            _cyanCanvas.Effect = null;
-            _tealCanvas.Effect = null;
-            _greenCanvas.Effect = null;
-            _lightGreenCanvas.Effect = null;
-            _limeCanvas.Effect = null;
-            _yellowCanvas.Effect = null;
-            _amberCanvas.Effect = null;
-            _orangeCanvas.Effect = null;
-            _brownCanvas.Effect = null;
-            _blueGreyCanvas.Effect = null;
-            _greyCanvas.Effect = null;
-            _deepOrangeCanvas.Effect = null;
-            _redCanvas.Effect = null;
-            _purpleCanvas.Effect = null;
-            _deepPurpleCanvas.Effect = null;
-            _blueCanvas.Effect = null;
-            _lightBlueCanvas.Effect = null;
-            _indigoCanvas.Effect = null;
-            _pinkCanvas.Effect = null;
+            foreach (var o in _polygons)
+            {
+                o.Value.Effect = null;
+            }
         }
 
         /// <summary>
@@ -632,12 +579,10 @@ namespace MaterialDesignAddon.Controls
         {
             _greyCanvas.IsEnabled = true;
             var greyPolys = _greyCanvas.FindChild<Canvas>("GreyPolys");
-            if (greyPolys == null)
-                return;
-            var greyOuter = greyPolys.FindChild<Polygon>("GreyOuter");
+            var greyOuter = _greyPolys.FindChild<Polygon>("GreyOuter");
             if (greyOuter != null)
                 greyOuter.Fill = new SolidColorBrush(Color.FromRgb(158, 158, 158));
-            var greyInner = greyPolys.FindChild<Polygon>("GreyInner");
+            var greyInner = _greyPolys.FindChild<Polygon>("GreyInner");
             if (greyInner != null)
                 greyInner.Fill = new SolidColorBrush(Color.FromRgb(97, 97, 97));
         }
@@ -648,15 +593,12 @@ namespace MaterialDesignAddon.Controls
         private void EnableBlueGrey()
         {
             _blueGreyCanvas.IsEnabled = true;
-            var blueGreyPolys = _blueGreyCanvas.FindChild<Canvas>("BlueGreyPolys");
-            if (blueGreyPolys == null)
-                return;
-            var greyOuter = blueGreyPolys.FindChild<Polygon>("BlueGreyOuter");
-            if (greyOuter != null)
-                greyOuter.Fill = new SolidColorBrush(Color.FromRgb(96, 125, 139));
-            var greyInner = blueGreyPolys.FindChild<Polygon>("BlueGreyInner");
-            if (greyInner != null)
-                greyInner.Fill = new SolidColorBrush(Color.FromRgb(69, 90, 100));
+            var blueGreyOuter = _blueGreyPolys.FindChild<Polygon>("BlueGreyOuter");
+            if (blueGreyOuter != null)
+                blueGreyOuter.Fill = new SolidColorBrush(Color.FromRgb(96, 125, 139));
+            var blueGreyInner = _blueGreyPolys.FindChild<Polygon>("BlueGreyInner");
+            if (blueGreyInner != null)
+                blueGreyInner.Fill = new SolidColorBrush(Color.FromRgb(69, 90, 100));
         }
 
         /// <summary>
@@ -665,13 +607,10 @@ namespace MaterialDesignAddon.Controls
         private void EnableBrown()
         {
             _brownCanvas.IsEnabled = true;
-            var brownPolys = _brownCanvas.FindChild<Canvas>("BrownPolys");
-            if (brownPolys == null)
-                return;
-            var brownOuter = brownPolys.FindChild<Polygon>("BrownOuter");
+            var brownOuter = _brownPolys.FindChild<Polygon>("BrownOuter");
             if (brownOuter != null)
                 brownOuter.Fill = new SolidColorBrush(Color.FromRgb(121, 85, 72));
-            var brownInner = brownPolys.FindChild<Polygon>("BrownInner");
+            var brownInner = _brownPolys.FindChild<Polygon>("BrownInner");
             if (brownInner != null)
                 brownInner.Fill = new SolidColorBrush(Color.FromRgb(93, 64, 55));
         }
@@ -693,25 +632,10 @@ namespace MaterialDesignAddon.Controls
         /// </summary>
         private void ClearSelectionIcons()
         {
-            _cyanSelector.Visibility = Visibility.Collapsed;
-            _tealSelector.Visibility = Visibility.Collapsed;
-            _greenSelector.Visibility = Visibility.Collapsed;
-            _lightGreenSelector.Visibility = Visibility.Collapsed;
-            _limeSelector.Visibility = Visibility.Collapsed;
-            _yellowSelector.Visibility = Visibility.Collapsed;
-            _amberSelector.Visibility = Visibility.Collapsed;
-            _orangeSelector.Visibility = Visibility.Collapsed;
-            _brownSelector.Visibility = Visibility.Collapsed;
-            _blueGreySelector.Visibility = Visibility.Collapsed;
-            _greySelector.Visibility = Visibility.Collapsed;
-            _deepOrangeSelector.Visibility = Visibility.Collapsed;
-            _redSelector.Visibility = Visibility.Collapsed;
-            _purpleSelector.Visibility = Visibility.Collapsed;
-            _deepPurpleSelector.Visibility = Visibility.Collapsed;
-            _blueSelector.Visibility = Visibility.Collapsed;
-            _lightBlueSelector.Visibility = Visibility.Collapsed;
-            _indigoSelector.Visibility = Visibility.Collapsed;
-            _pinkSelector.Visibility = Visibility.Collapsed;
+            foreach (var o in _selectors)
+            {
+                o.Value.Visibility = Visibility.Collapsed;
+            }
         }
 
         /// <summary>
@@ -759,6 +683,38 @@ namespace MaterialDesignAddon.Controls
             _indigo2Canvas.Visibility = Visibility.Collapsed;
             _pink2Canvas.Visibility = Visibility.Collapsed;
         }
+
+        /// <summary>
+        /// Returns the canvas that contains the polygons for the
+        /// selected color.
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        private Canvas GetPolygons(string color)
+        {
+            Canvas canvas;
+            _polygons.TryGetValue(color, out canvas);
+            return canvas;
+        }
+
+        /// <summary>
+        /// Applies a drop shadow effect to the canvas that contains the polygons
+        /// for the selected color.
+        /// </summary>
+        /// <param name="color"></param>
+        private void ApplyDropShadowEffect(string color)
+        {
+            var canvas = GetPolygons(color);
+            canvas.Effect = new DropShadowEffect
+            {
+                BlurRadius = 14,
+                Color = Color.FromArgb(153, 0, 0, 0),
+                Direction = 270,
+                Opacity = 0.42,
+                RenderingBias = RenderingBias.Performance,
+                ShadowDepth = 4.5
+            };
+        }
         #endregion
 
         #region Dependency Properties
@@ -794,12 +750,19 @@ namespace MaterialDesignAddon.Controls
             set { SetValue(SelectorForegroundColorProperty, value); }
         }
 
+        /// <summary>
+        /// The stretch property
+        /// </summary>
         public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(
             "Stretch", typeof(Stretch), typeof(MaterialColorWheel), new PropertyMetadata(default(Stretch)));
 
+        /// <summary>
+        /// Gets or sets the stretch.
+        /// </summary>
+        /// <value>The stretch.</value>
         public Stretch Stretch
         {
-            get { return (Stretch) GetValue(StretchProperty); }
+            get { return (Stretch)GetValue(StretchProperty); }
             set { SetValue(StretchProperty, value); }
         }
         #endregion
@@ -969,6 +932,49 @@ namespace MaterialDesignAddon.Controls
         private bool _greySelected;
         private bool _blueGreySelected;
         private readonly IEnumerable<Swatch> _swatches;
+        private Dictionary<string, Canvas> _colorCanvases;
+        private Dictionary<string, Path> _selectors;
+        private Dictionary<string, Canvas> _polygons;
+        // ReSharper disable InconsistentNaming
+        private const string PART_CyanPolys = "PART_CyanPolys";
+        private const string PART_TealPolys = "PART_TealPolys";
+        private const string PART_GreenPolys = "PART_GreenPolys";
+        private const string PART_LightGreenPolys = "PART_LightGreenPolys";
+        private const string PART_LimePolys = "PART_LimePolys";
+        private const string PART_YellowPolys = "PART_YellowPolys";
+        private const string PART_AmberPolys = "PART_AmberPolys";
+        private const string PART_OrangePolys = "PART_OrangePolys";
+        private const string PART_BrownPolys = "PART_BrownPolys";
+        private const string PART_BlueGreyPolys = "PART_BlueGreyPolys";
+        private const string PART_GreyPolys = "PART_GreyPolys";
+        private const string PART_DeepOrangePolys = "PART_DeepOrangePolys";
+        private const string PART_RedPolys = "PART_RedPolys";
+        private const string PART_PurplePolys = "PART_PurplePolys";
+        private const string PART_DeepPurplePolys = "PART_DeepPurplePolys";
+        private const string PART_BluePolys = "PART_BluePolys";
+        private const string PART_LightBluePolys = "PART_LightBluePolys";
+        private const string PART_IndigoPolys = "PART_IndigoPolys";
+        private const string PART_PinkPolys = "PART_PinkPolys";
+        // ReSharper restore InconsistentNaming
+        private Canvas _cyanPolys;
+        private Canvas _tealPolys;
+        private Canvas _greenPolys;
+        private Canvas _lightGreenPolys;
+        private Canvas _limePolys;
+        private Canvas _yellowPolys;
+        private Canvas _amberPolys;
+        private Canvas _orangePolys;
+        private Canvas _brownPolys;
+        private Canvas _blueGreyPolys;
+        private Canvas _greyPolys;
+        private Canvas _deepOrangePolys;
+        private Canvas _redPolys;
+        private Canvas _purplePolys;
+        private Canvas _deepPurplePolys;
+        private Canvas _bluePolys;
+        private Canvas _lightBluePolys;
+        private Canvas _indigoPolys;
+        private Canvas _pinkPolys;
         #endregion
     }
 }

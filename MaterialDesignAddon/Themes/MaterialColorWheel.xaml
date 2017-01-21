@@ -97,7 +97,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="0"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="CyanPolys">
+                        <Canvas x:Name="PART_CyanPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="CyanOuter" FillRule="NonZero" Fill="#00BCD4"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="CyanInner" FillRule="NonZero" Fill="#0097A7"/>
                         </Canvas>
@@ -129,7 +129,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="18.94736842105263"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="TealPolys">
+                        <Canvas x:Name="PART_TealPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="TealOuter" FillRule="NonZero" Fill="#009688"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="TealInner" FillRule="NonZero" Fill="#00796B"/>
                         </Canvas>
@@ -168,7 +168,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="37.89473684210526"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="GreenPolys">
+                        <Canvas x:Name="PART_GreenPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="GreenOuter" FillRule="NonZero" Fill="#4CAF50"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="GreenInner" FillRule="NonZero" Fill="#388E3C"/>
                         </Canvas>
@@ -207,7 +207,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="56.84210526315789"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="LightGreenPolys">
+                        <Canvas x:Name="PART_LightGreenPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LimeGreenOuter" FillRule="NonZero" Fill="#8BC34A"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LimeGreenInner" FillRule="NonZero" Fill="#689F38"/>
                         </Canvas>
@@ -246,7 +246,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="75.78947368421052"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="LimePolys">
+                        <Canvas x:Name="PART_LimePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LimeOuter" FillRule="NonZero" Fill="#CDDC39"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LimeInner" FillRule="NonZero" Fill="#AFB42B"/>
                         </Canvas>
@@ -285,7 +285,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="94.73684210526315"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="YellowPolys">
+                        <Canvas x:Name="PART_YellowPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="YellowOuter" FillRule="NonZero" Fill="#FFEB3B"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="YellowInner" FillRule="NonZero" Fill="#FBC02D"/>
                         </Canvas>
@@ -324,7 +324,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="113.68421052631578"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="AmberPolys">
+                        <Canvas x:Name="PART_AmberPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="AmberOuter" FillRule="NonZero" Fill="#FFC107"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="AmberInner" FillRule="NonZero" Fill="#FFA000"/>
                         </Canvas>
@@ -363,7 +363,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="132.6315789473684"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="OrangePolys">
+                        <Canvas x:Name="PART_OrangePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="OrangeOuter" FillRule="NonZero" Fill="#FF9800"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="OrangeInner" FillRule="NonZero" Fill="#F57C00"/>
                         </Canvas>
@@ -402,7 +402,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="151.57894736842104"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="BrownPolys">
+                        <Canvas x:Name="PART_BrownPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BrownOuter" FillRule="NonZero" Fill="#795548"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BrownInner" FillRule="NonZero" Fill="#5D4037"/>
                         </Canvas>
@@ -441,7 +441,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="170.52631578947367"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="BlueGreyPolys">
+                        <Canvas x:Name="PART_BlueGreyPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BlueGreyOuter" FillRule="NonZero" Fill="#607D8B"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BlueGreyInner" FillRule="NonZero" Fill="#455A64"/>
                         </Canvas>
@@ -480,7 +480,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="189.4736842105263"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="GreyPolys">
+                        <Canvas x:Name="PART_GreyPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="GreyOuter" FillRule="NonZero" Fill="{TemplateBinding SelectorColor}"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="GreyInner" FillRule="NonZero" Fill="#616161"/>
                         </Canvas>
@@ -519,7 +519,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="208.42105263157893"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="DeepOrangePolys">
+                        <Canvas x:Name="PART_DeepOrangePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="DeepOrangeOuter" FillRule="NonZero" Fill="#FF5722"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="DeepOrangeInner" FillRule="NonZero" Fill="#E64A19"/>
                         </Canvas>
@@ -558,7 +558,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="227.36842105263156"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="RedPolys">
+                        <Canvas x:Name="PART_RedPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="RedOuter" FillRule="NonZero" Fill="#F44336"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="RedInner" FillRule="NonZero" Fill="#D32F2F"/>
                         </Canvas>
@@ -597,7 +597,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="265.2631578947368"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="PurplePolys">
+                        <Canvas x:Name="PART_PurplePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="PurpleOuter" FillRule="NonZero" Fill="#9C27B0"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="PurpleInner" FillRule="NonZero" Fill="#7B1FA2"/>
                         </Canvas>
@@ -636,7 +636,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="284.2105263157895"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="DeepPurplePolys">
+                        <Canvas x:Name="PART_DeepPurplePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="DeepPurpleOuter" FillRule="NonZero" Fill="#673AB7"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="DeepPurpleInner" FillRule="NonZero" Fill="#512DA8"/>
                         </Canvas>
@@ -675,7 +675,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="322.1052631578947"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="BluePolys">
+                        <Canvas x:Name="PART_BluePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="BlueOuter" FillRule="NonZero" Fill="#2196F3"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="BlueInner" FillRule="NonZero" Fill="#1976D2"/>
                         </Canvas>
@@ -714,7 +714,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="341.05263157894734"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="LightBluePolys">
+                        <Canvas x:Name="PART_LightBluePolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="LightBlueOuter" FillRule="NonZero" Fill="#03A9F4"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="LightBlueInner" FillRule="NonZero" Fill="#0288D1"/>
                         </Canvas>
@@ -753,8 +753,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="303.1578947368421"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="IndigoPolys">
-                            <!-- Apply drop shadow to canvas -->
+                        <Canvas x:Name="PART_IndigoPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="IndigoOuter" FillRule="NonZero" Fill="#3F51B5"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="IndigoInner" FillRule="NonZero" Fill="#303F9F"/>
                         </Canvas>
@@ -793,8 +792,7 @@
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="246.3157894736842"/>
                         </Canvas.RenderTransform>
-                        <Canvas x:Name="PinkPolys">
-                            <!-- Apply drop shadow to canvas -->
+                        <Canvas x:Name="PART_PinkPolys">
                             <Polygon Points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" x:Name="PinkOuter" FillRule="NonZero" Fill="#E91E63"/>
                             <Polygon Points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" x:Name="PinkInner" FillRule="NonZero" Fill="#C2185B"/>
                         </Canvas>
