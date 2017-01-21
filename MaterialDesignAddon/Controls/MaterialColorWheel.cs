@@ -278,7 +278,7 @@ namespace MaterialDesignAddon.Controls
                     _blueGreySelected = true;
                 if (upperColorName == "BrownSelected")
                     _brownSelected = true;
-                DisableInvalidColorChoices();
+                DisableInvalidColorChoices(upperColorName);
             }
             else
             {
@@ -339,20 +339,91 @@ namespace MaterialDesignAddon.Controls
                     _blueGreySelected = true;
                 if (upperColorName == "BrownSelected")
                     _brownSelected = true;
-                DisableInvalidColorChoices();
+                DisableInvalidColorChoices(upperColorName);
             }
         }
         #endregion
 
-        #region Helpers
+        #region Helpers        
         /// <summary>
         /// Keeps grey, brown, and blue grey from being selected as an accent color.
         /// </summary>
-        private void DisableInvalidColorChoices()
+        /// <param name="color">The color.</param>
+        private void DisableInvalidColorChoices(string color)
         {
             DisableGrey();
             DisableBlueGrey();
             DisableBrown();
+            DisableCurrentColor(color);
+        }
+
+        /// <summary>
+        /// Disables the currently selected primary color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        private void DisableCurrentColor(string color)
+        {
+            switch (color)
+            {
+                case "Cyan":
+                    _cyanCanvas.IsEnabled = false;
+                    break;
+                case "Teal":
+                    _tealCanvas.IsEnabled = false;
+                    break;
+                case "Green":
+                    _greenCanvas.IsEnabled = false;
+                    break;
+                case "LightGreen":
+                    _lightGreenCanvas.IsEnabled = false;
+                    break;
+                case "Lime":
+                    _limeCanvas.IsEnabled = false;
+                    break;
+                case "Yellow":
+                    _yellowCanvas.IsEnabled = false;
+                    break;
+                case "Amber":
+                    _amberCanvas.IsEnabled = false;
+                    break;
+                case "Orange":
+                    _orangeCanvas.IsEnabled = false;
+                    break;
+                case "Brown":
+                    _brownCanvas.IsEnabled = false;
+                    break;
+                case "BlueGrey":
+                    _blueGreyCanvas.IsEnabled = false;
+                    break;
+                case "Grey":
+                    _greyCanvas.IsEnabled = false;
+                    break;
+                case "DeepOrange":
+                    _deepOrangeCanvas.IsEnabled = false;
+                    break;
+                case "Red":
+                    _redCanvas.IsEnabled = false;
+                    break;
+                case "Purple":
+                    _purpleCanvas.IsEnabled = false;
+                    break;
+                case "DeepPurple":
+                    _deepPurpleCanvas.IsEnabled = false;
+                    break;
+                case "Blue":
+                    _blueCanvas.IsEnabled = false;
+                    break;
+                case "LightBlue":
+                    _lightBlueCanvas.IsEnabled = false;
+                    break;
+                case "Indigo":
+                    _indigoCanvas.IsEnabled = false;
+                    break;
+                case "Pink":
+                    _pinkCanvas.IsEnabled = false;
+                    break;
+
+            }
         }
 
         /// <summary>
@@ -420,6 +491,33 @@ namespace MaterialDesignAddon.Controls
             EnableGrey();
             EnableBlueGrey();
             EnableBrown();
+            EnableAllColors();
+        }
+
+        /// <summary>
+        /// Enables all colors.
+        /// </summary>
+        private void EnableAllColors()
+        {
+            _cyanCanvas.IsEnabled = true;
+            _tealCanvas.IsEnabled = true;
+            _greenCanvas.IsEnabled = true;
+            _lightGreenCanvas.IsEnabled = true;
+            _limeCanvas.IsEnabled = true;
+            _yellowCanvas.IsEnabled = true;
+            _amberCanvas.IsEnabled = true;
+            _orangeCanvas.IsEnabled = true;
+            _brownCanvas.IsEnabled = true;
+            _blueGreyCanvas.IsEnabled = true;
+            _greyCanvas.IsEnabled = true;
+            _deepOrangeCanvas.IsEnabled = true;
+            _redCanvas.IsEnabled = true;
+            _purpleCanvas.IsEnabled = true;
+            _deepPurpleCanvas.IsEnabled = true;
+            _blueCanvas.IsEnabled = true;
+            _lightBlueCanvas.IsEnabled = true;
+            _indigoCanvas.IsEnabled = true;
+            _pinkCanvas.IsEnabled = true;
         }
 
         /// <summary>

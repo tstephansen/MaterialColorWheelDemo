@@ -233,14 +233,10 @@
                             <Grid x:Name="PART_StatusBarGrid"
                                   Grid.Row="2"
                                   Background="{DynamicResource PrimaryHueMidBrush}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="20" />
-                                </Grid.ColumnDefinitions>
                                 <controls:MaterialStatusBar x:Name="PART_StatusBar"
                                                             Grid.Column="0"
                                                             Height="30"
-                                                            Margin="1,1,1,1"
+                                                            Margin="10,1,1,1"
                                                             HorizontalAlignment="Left"
                                                             VerticalAlignment="Bottom"
                                                             VerticalContentAlignment="Center"

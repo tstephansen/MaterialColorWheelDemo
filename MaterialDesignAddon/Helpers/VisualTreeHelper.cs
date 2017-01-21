@@ -3,6 +3,12 @@ using System.Windows;
 
 namespace MaterialDesignAddon.Helpers
 {
+    /// <summary>
+    /// Helper methods for UI-related tasks.
+    /// I, Tim Stephansen, take no credit for this class whatsoever.
+    /// This class was obtained from Philip Sumi (a fellow WPF Disciples blog)
+    /// http://www.hardcodet.net/uploads/2009/06/UIHelper.cs
+    /// </summary>
     public static class VisualTreeHelper
     {
         /// <summary>

@@ -11,9 +11,9 @@
                             Width="800"
                             Height="500"
                             mc:Ignorable="d">
-    <Window.DataContext>
+    <addon:SimpleMaterialWindow.DataContext>
         <vm:MainWindowViewModel />
-    </Window.DataContext>
+    </addon:SimpleMaterialWindow.DataContext>
     <Grid>
         <dragablz:TabablzControl x:Name="MainTabControl"
                                  Style="{DynamicResource MaterialDesignTabablzControlStyle}"
