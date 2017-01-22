@@ -1,5 +1,4 @@
-﻿using MaterialDesignColors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
@@ -9,16 +8,18 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 using MaterialDesignAddon.Helpers;
+using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using System.Windows.Media.Animation;
 
 namespace MaterialDesignAddon.Controls
 {
     /// <summary>
-    /// A color picker designed after Google's customizer.
-    /// The first click sets the primary color and the second click sets the accent color.
-    /// The credit for the design of this control goes to Google and the original can be found
-    /// at https://getmdl.io/customize/index.html. I took their SVG file and created a XAML control
-    /// based on that file.
+    ///     A color picker designed after Google's customizer.
+    ///     The first click sets the primary color and the second click sets the accent color.
+    ///     The credit for the design of this control goes to Google and the original can be found
+    ///     at https://getmdl.io/customize/index.html. I took their SVG file and created a XAML control
+    ///     based on that file.
     /// </summary>
     /// <seealso cref="System.Windows.Controls.Control" />
     [TemplatePart(Name = PART_CyanCanvas, Type = typeof(Canvas))]
@@ -116,11 +117,12 @@ namespace MaterialDesignAddon.Controls
     [TemplatePart(Name = PART_LightBluePolys, Type = typeof(Canvas))]
     [TemplatePart(Name = PART_IndigoPolys, Type = typeof(Canvas))]
     [TemplatePart(Name = PART_PinkPolys, Type = typeof(Canvas))]
+    [TemplatePart(Name = PART_DarkLightButton, Type = typeof(Button))]
     public class MaterialColorWheel : Control
     {
         #region Initialization and Template
         /// <summary>
-        /// Initializes static members of the <see cref="MaterialColorWheel"/> class.
+        ///     Initializes static members of the <see cref="MaterialColorWheel" /> class.
         /// </summary>
         static MaterialColorWheel()
         {
@@ -128,7 +130,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaterialColorWheel"/> class.
+        ///     Initializes a new instance of the <see cref="MaterialColorWheel" /> class.
         /// </summary>
         public MaterialColorWheel()
         {
@@ -136,7 +138,8 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate" />.
+        ///     When overridden in a derived class, is invoked whenever application code or internal processes call
+        ///     <see cref="M:System.Windows.FrameworkElement.ApplyTemplate" />.
         /// </summary>
         public override void OnApplyTemplate()
         {
@@ -236,7 +239,7 @@ namespace MaterialDesignAddon.Controls
             _lightBluePolys = GetTemplateChild(PART_LightBluePolys) as Canvas;
             _indigoPolys = GetTemplateChild(PART_IndigoPolys) as Canvas;
             _pinkPolys = GetTemplateChild(PART_PinkPolys) as Canvas;
-
+            _darkLightButton = GetTemplateChild(PART_DarkLightButton) as Button;
             _colorCanvases = new Dictionary<string, Canvas>
             {
                 {"Cyan", _cyanCanvas},
@@ -261,47 +264,47 @@ namespace MaterialDesignAddon.Controls
             };
             _selectors = new Dictionary<string, Path>
             {
-                { "Cyan", _cyanSelector},
-                { "Teal", _tealSelector},
-                { "Green", _greenSelector},
-                { "LightGreen", _lightGreenSelector},
-                { "Lime", _limeSelector},
-                { "Yellow", _yellowSelector},
-                { "Amber", _amberSelector},
-                { "Orange", _orangeSelector},
-                { "Brown", _brownSelector},
-                { "BlueGrey", _blueGreySelector},
-                { "Grey", _greySelector},
-                { "DeepOrange", _deepOrangeSelector},
-                { "Red", _redSelector},
-                { "Purple", _purpleSelector},
-                { "DeepPurple", _deepPurpleSelector},
-                { "Blue", _blueSelector},
-                { "LightBlue", _lightBlueSelector},
-                { "Indigo", _indigoSelector},
-                { "Pink", _pinkSelector}
+                {"Cyan", _cyanSelector},
+                {"Teal", _tealSelector},
+                {"Green", _greenSelector},
+                {"LightGreen", _lightGreenSelector},
+                {"Lime", _limeSelector},
+                {"Yellow", _yellowSelector},
+                {"Amber", _amberSelector},
+                {"Orange", _orangeSelector},
+                {"Brown", _brownSelector},
+                {"BlueGrey", _blueGreySelector},
+                {"Grey", _greySelector},
+                {"DeepOrange", _deepOrangeSelector},
+                {"Red", _redSelector},
+                {"Purple", _purpleSelector},
+                {"DeepPurple", _deepPurpleSelector},
+                {"Blue", _blueSelector},
+                {"LightBlue", _lightBlueSelector},
+                {"Indigo", _indigoSelector},
+                {"Pink", _pinkSelector}
             };
             _polygons = new Dictionary<string, Canvas>
             {
-                { "Cyan", _cyanPolys},
-                { "Teal", _tealPolys},
-                { "Green", _greenPolys},
-                { "LightGreen", _lightGreenPolys},
-                { "Lime", _limePolys},
-                { "Yellow", _yellowPolys},
-                { "Amber", _amberPolys},
-                { "Orange", _orangePolys},
-                { "Brown", _brownPolys},
-                { "BlueGrey", _blueGreyPolys},
-                { "Grey", _greyPolys},
-                { "DeepOrange", _deepOrangePolys},
-                { "Red", _redPolys},
-                { "Purple", _purplePolys},
-                { "DeepPurple", _deepPurplePolys},
-                { "Blue", _bluePolys},
-                { "LightBlue", _lightBluePolys},
-                { "Indigo", _indigoPolys},
-                { "Pink", _pinkPolys}
+                {"Cyan", _cyanPolys},
+                {"Teal", _tealPolys},
+                {"Green", _greenPolys},
+                {"LightGreen", _lightGreenPolys},
+                {"Lime", _limePolys},
+                {"Yellow", _yellowPolys},
+                {"Amber", _amberPolys},
+                {"Orange", _orangePolys},
+                {"Brown", _brownPolys},
+                {"BlueGrey", _blueGreyPolys},
+                {"Grey", _greyPolys},
+                {"DeepOrange", _deepOrangePolys},
+                {"Red", _redPolys},
+                {"Purple", _purplePolys},
+                {"DeepPurple", _deepPurplePolys},
+                {"Blue", _bluePolys},
+                {"LightBlue", _lightBluePolys},
+                {"Indigo", _indigoPolys},
+                {"Pink", _pinkPolys}
             };
             if (_cyanCanvas != null)
                 _cyanCanvas.PreviewMouseLeftButtonUp += UnrestrictedColorCanvas_PreviewMouseLeftButtonUp;
@@ -341,13 +344,35 @@ namespace MaterialDesignAddon.Controls
                 _indigoCanvas.PreviewMouseLeftButtonUp += UnrestrictedColorCanvas_PreviewMouseLeftButtonUp;
             if (_pinkCanvas != null)
                 _pinkCanvas.PreviewMouseLeftButtonUp += UnrestrictedColorCanvas_PreviewMouseLeftButtonUp;
+            if (_darkLightButton != null)
+                _darkLightButton.Click += (s, e) =>
+                {
+                    var btn = (Button)s;
+                    if (btn == null)
+                        return;
+                    ToggleDarkLight();
+                    if (IsDark)
+                    {
+                        IsDark = false;
+                        new PaletteHelper().SetLightDark(false);
+                        CenterButtonFontColor = new SolidColorBrush(Color.FromArgb(221, 0, 0, 0));
+                        CenterButtonText = "Light";
+                    }
+                    else
+                    {
+                        IsDark = true;
+                        new PaletteHelper().SetLightDark(true);
+                        CenterButtonFontColor = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                        CenterButtonText = "Dark";
+                    }
+                };
         }
         #endregion
 
         #region Event Methods
         /// <summary>
-        /// Fired when a canvas that is not grey, blue grey, or brown is clicked. This changes
-        /// the primary or accent color depending on which selection is being processed.
+        ///     Fired when a canvas that is not grey, blue grey, or brown is clicked. This changes
+        ///     the primary or accent color depending on which selection is being processed.
         /// </summary>
         /// <param name="sender">The canvas.</param>
         /// <param name="e">The event arguments</param>
@@ -369,14 +394,14 @@ namespace MaterialDesignAddon.Controls
             }
             if (!_isFirstColorSelected)
             {
+                PrimaryName = upperColorName;
                 DisableAllEffects();
                 var selector = canvas.FindChild<Path>(selectorName);
                 if (selector != null)
                     selector.Visibility = Visibility.Visible;
-                // Disabled this until I can figure out a way to fix the font size inside the viewbox.
-                //var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
-                //if (numberOneCanvas != null)
-                //    numberOneCanvas.Visibility = Visibility.Visible;
+                var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
+                if (numberOneCanvas != null)
+                    numberOneCanvas.Visibility = Visibility.Visible;
                 _isFirstColorSelected = true;
                 new PaletteHelper().ReplacePrimaryColor(colorName);
                 if (upperColorName == "Grey")
@@ -390,17 +415,16 @@ namespace MaterialDesignAddon.Controls
             }
             else
             {
-                // Disabled this until I can figure out a way to fix the font size inside the viewbox.
-                //var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
-                //if (numberOneCanvas?.Visibility == Visibility.Visible)
-                //    return;
+                AccentName = upperColorName;
+                var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
+                if (numberOneCanvas?.Visibility == Visibility.Visible)
+                    return;
                 var selector = canvas.FindChild<Path>(selectorName);
                 if (selector != null)
                     selector.Visibility = Visibility.Visible;
-                // Disabled this until I can figure out a way to fix the font size inside the viewbox.
-                //var numberTwoCanvas = canvas.FindChild<Canvas>(numberTwoName);
-                //if (numberTwoCanvas != null)
-                //    numberTwoCanvas.Visibility = Visibility.Visible;
+                var numberTwoCanvas = canvas.FindChild<Canvas>(numberTwoName);
+                if (numberTwoCanvas != null)
+                    numberTwoCanvas.Visibility = Visibility.Visible;
                 _isSecondColorSelected = true;
                 ApplyDropShadowEffect(upperColorName);
                 new PaletteHelper().ReplaceAccentColor(colorName);
@@ -409,9 +433,9 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Fired when a canvas that is grey, blue grey, or brown is clicked. This changes
-        /// the primary color only because these colors are not allowed to be selected as 
-        /// accent colors.
+        ///     Fired when a canvas that is grey, blue grey, or brown is clicked. This changes
+        ///     the primary color only because these colors are not allowed to be selected as
+        ///     accent colors.
         /// </summary>
         /// <param name="sender">The canvas.</param>
         /// <param name="e">The event arguments</param>
@@ -433,14 +457,15 @@ namespace MaterialDesignAddon.Controls
             }
             if (!_isFirstColorSelected)
             {
+                PrimaryName = upperColorName;
                 DisableAllEffects();
                 var selector = canvas.FindChild<Path>(selectorName);
                 if (selector != null)
                     selector.Visibility = Visibility.Visible;
                 // Disabled this until I can figure out a way to fix the font size inside the viewbox.
-                //var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
-                //if (numberOneCanvas != null)
-                //    numberOneCanvas.Visibility = Visibility.Visible;
+                var numberOneCanvas = canvas.FindChild<Canvas>(numberOneName);
+                if (numberOneCanvas != null)
+                    numberOneCanvas.Visibility = Visibility.Visible;
                 _isFirstColorSelected = true;
                 new PaletteHelper().ReplacePrimaryColor(colorName);
                 if (upperColorName == "Grey")
@@ -457,7 +482,7 @@ namespace MaterialDesignAddon.Controls
 
         #region Helpers        
         /// <summary>
-        /// Keeps grey, brown, and blue grey from being selected as an accent color.
+        ///     Keeps grey, brown, and blue grey from being selected as an accent color.
         /// </summary>
         /// <param name="color">The color.</param>
         private void DisableInvalidColorChoices(string color)
@@ -468,9 +493,8 @@ namespace MaterialDesignAddon.Controls
             DisableCurrentColor(color);
         }
 
-
         /// <summary>
-        /// Gets the canvas of the specified color.
+        ///     Gets the canvas of the specified color.
         /// </summary>
         /// <param name="color">The color.</param>
         /// <returns>Canvas.</returns>
@@ -482,7 +506,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Disables the currently selected primary color.
+        ///     Disables the currently selected primary color.
         /// </summary>
         /// <param name="color">The color.</param>
         private void DisableCurrentColor(string color)
@@ -493,7 +517,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Keeps grey from being selected as an accent color.
+        ///     Keeps grey from being selected as an accent color.
         /// </summary>
         private void DisableGrey()
         {
@@ -509,7 +533,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Keeps blue grey from being selected as an accent color.
+        ///     Keeps blue grey from being selected as an accent color.
         /// </summary>
         private void DisableBlueGrey()
         {
@@ -525,7 +549,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Keeps brown from being selected as an accent color.
+        ///     Keeps brown from being selected as an accent color.
         /// </summary>
         private void DisableBrown()
         {
@@ -541,7 +565,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Enables blue grey, grey, and brown to be selected as a primary color.
+        ///     Enables blue grey, grey, and brown to be selected as a primary color.
         /// </summary>
         private void EnableDisabledColorChoices()
         {
@@ -552,34 +576,29 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Enables all colors.
+        ///     Enables all colors.
         /// </summary>
         private void EnableAllColors()
         {
             foreach (var o in _colorCanvases)
-            {
                 o.Value.IsEnabled = true;
-            }
         }
 
         /// <summary>
-        /// Disables all effects.
+        ///     Disables all effects.
         /// </summary>
         private void DisableAllEffects()
         {
             foreach (var o in _polygons)
-            {
                 o.Value.Effect = null;
-            }
         }
 
         /// <summary>
-        /// Enables grey to be selected.
+        ///     Enables grey to be selected.
         /// </summary>
         private void EnableGrey()
         {
             _greyCanvas.IsEnabled = true;
-            var greyPolys = _greyCanvas.FindChild<Canvas>("GreyPolys");
             var greyOuter = _greyPolys.FindChild<Polygon>("GreyOuter");
             if (greyOuter != null)
                 greyOuter.Fill = new SolidColorBrush(Color.FromRgb(158, 158, 158));
@@ -589,7 +608,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Enables blue grey to be selected.
+        ///     Enables blue grey to be selected.
         /// </summary>
         private void EnableBlueGrey()
         {
@@ -603,7 +622,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Enables brown to be selected.
+        ///     Enables brown to be selected.
         /// </summary>
         private void EnableBrown()
         {
@@ -617,7 +636,7 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Sets the visibility to collapsed for all of the selectors and indicators.
+        ///     Sets the visibility to collapsed for all of the selectors and indicators.
         /// </summary>
         private void ClearAllSelections()
         {
@@ -629,19 +648,17 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Sets the visibility of all the selector <see cref="Path"/> to collapsed.
+        ///     Sets the visibility of all the selector <see cref="Path" /> to collapsed.
         /// </summary>
         private void ClearSelectionIcons()
         {
             foreach (var o in _selectors)
-            {
                 o.Value.Visibility = Visibility.Collapsed;
-            }
         }
 
         /// <summary>
-        /// Sets the visibility of all of the <see cref="TextBlock"/> that specify 
-        /// whether the selection is primary or accent to collapsed.
+        ///     Sets the visibility of all of the <see cref="TextBlock" /> that specify
+        ///     whether the selection is primary or accent to collapsed.
         /// </summary>
         private void ClearTextIcons()
         {
@@ -686,8 +703,8 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Returns the canvas that contains the polygons for the
-        /// selected color.
+        ///     Returns the canvas that contains the polygons for the
+        ///     selected color.
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -699,8 +716,8 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// Applies a drop shadow effect to the canvas that contains the polygons
-        /// for the selected color.
+        ///     Applies a drop shadow effect to the canvas that contains the polygons
+        ///     for the selected color.
         /// </summary>
         /// <param name="color"></param>
         private void ApplyDropShadowEffect(string color)
@@ -716,17 +733,59 @@ namespace MaterialDesignAddon.Controls
                 ShadowDepth = 4.5
             };
         }
+
+        /// <summary>
+        ///     Toggles the theme between dark and light.
+        /// </summary>
+        public virtual void ToggleDarkLight()
+        {
+            ReplaceEntry("MaterialDesignUserControlBackground",
+                IsDark ? new SolidColorBrush(Color.FromRgb(224, 224, 224)) : new SolidColorBrush(Color.FromRgb(55, 71, 79)));
+        }
+
+        /// <summary>
+        ///     Replaces a certain entry anywhere in the parent dictionary and its merged dictionaries.
+        ///     This was taken from the Material Design In XAML Toolkit. James gets the credit for this.
+        /// </summary>
+        /// <param name="entryName">The entry to replace</param>
+        /// <param name="newValue">The new entry value</param>
+        /// <param name="parentDictionary">The root dictionary to start searching at. Null means using Application.Current.Resources</param>
+        private static void ReplaceEntry(object entryName, object newValue, ResourceDictionary parentDictionary = null)
+        {
+            if (parentDictionary == null)
+                parentDictionary = Application.Current.Resources;
+
+            if (parentDictionary.Contains(entryName))
+            {
+                var brush = parentDictionary[entryName] as SolidColorBrush;
+                if (brush != null && !brush.IsFrozen)
+                {
+                    var animation = new ColorAnimation
+                    {
+                        From = ((SolidColorBrush)parentDictionary[entryName]).Color,
+                        To = ((SolidColorBrush)newValue).Color,
+                        Duration = new Duration(TimeSpan.FromMilliseconds(300))
+                    };
+                    brush.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+                }
+                else
+                    parentDictionary[entryName] = newValue;
+            }
+
+            foreach (var dictionary in parentDictionary.MergedDictionaries)
+                ReplaceEntry(entryName, newValue, dictionary);
+        }
         #endregion
 
         #region Dependency Properties
         /// <summary>
-        /// The selector color property
+        ///     The selector color property
         /// </summary>
         public static readonly DependencyProperty SelectorColorProperty = DependencyProperty.Register(
             "SelectorColor", typeof(SolidColorBrush), typeof(MaterialColorWheel), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(158, 158, 158))));
 
         /// <summary>
-        /// Gets or sets the color of the selector.
+        ///     Gets or sets the color of the selector.
         /// </summary>
         /// <value>The color of the selector.</value>
         public SolidColorBrush SelectorColor
@@ -736,13 +795,14 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// The selector foreground color property
+        ///     The selector foreground color property
         /// </summary>
         public static readonly DependencyProperty SelectorForegroundColorProperty = DependencyProperty.Register(
-            "SelectorForegroundColor", typeof(SolidColorBrush), typeof(MaterialColorWheel), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(255, 255, 255))));
+            "SelectorForegroundColor", typeof(SolidColorBrush), typeof(MaterialColorWheel),
+            new PropertyMetadata(new SolidColorBrush(Color.FromRgb(255, 255, 255))));
 
         /// <summary>
-        /// Gets or sets the color of the selector foreground.
+        ///     Gets or sets the color of the selector foreground.
         /// </summary>
         /// <value>The color of the selector foreground.</value>
         public SolidColorBrush SelectorForegroundColor
@@ -752,13 +812,13 @@ namespace MaterialDesignAddon.Controls
         }
 
         /// <summary>
-        /// The stretch property
+        ///     The stretch property
         /// </summary>
         public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(
             "Stretch", typeof(Stretch), typeof(MaterialColorWheel), new PropertyMetadata(default(Stretch)));
 
         /// <summary>
-        /// Gets or sets the stretch.
+        ///     Gets or sets the stretch.
         /// </summary>
         /// <value>The stretch.</value>
         public Stretch Stretch
@@ -766,9 +826,76 @@ namespace MaterialDesignAddon.Controls
             get { return (Stretch)GetValue(StretchProperty); }
             set { SetValue(StretchProperty, value); }
         }
+
+        /// <summary>
+        ///     The center button text property
+        /// </summary>
+        public static readonly DependencyProperty CenterButtonTextProperty = DependencyProperty.Register(
+            "CenterButtonText", typeof(string), typeof(MaterialColorWheel), new FrameworkPropertyMetadata("Light"));
+
+        /// <summary>
+        ///     Gets or sets the center button text.
+        /// </summary>
+        /// <value>The center button text.</value>
+        public string CenterButtonText
+        {
+            get { return (string)GetValue(CenterButtonTextProperty); }
+            set { SetValue(CenterButtonTextProperty, value); }
+        }
+
+        /// <summary>
+        ///     The button width property
+        /// </summary>
+        public static readonly DependencyProperty ButtonWidthProperty = DependencyProperty.Register(
+            "ButtonWidth", typeof(double), typeof(MaterialColorWheel), new PropertyMetadata(default(double)));
+
+        /// <summary>
+        ///     Gets or sets the width of the button.
+        /// </summary>
+        /// <value>The width of the button.</value>
+        public double ButtonWidth
+        {
+            get { return (double)GetValue(ButtonWidthProperty); }
+            set { SetValue(ButtonWidthProperty, value); }
+        }
+
+        /// <summary>
+        ///     The button height property
+        /// </summary>
+        public static readonly DependencyProperty ButtonHeightProperty = DependencyProperty.Register(
+            "ButtonHeight", typeof(double), typeof(MaterialColorWheel), new PropertyMetadata(default(double)));
+
+        /// <summary>
+        ///     Gets or sets the height of the button.
+        /// </summary>
+        /// <value>The height of the button.</value>
+        public double ButtonHeight
+        {
+            get { return (double)GetValue(ButtonHeightProperty); }
+            set { SetValue(ButtonHeightProperty, value); }
+        }
+
+        /// <summary>
+        ///     The center button font color property
+        /// </summary>
+        public static readonly DependencyProperty CenterButtonFontColorProperty = DependencyProperty.Register(
+            "CenterButtonFontColor", typeof(SolidColorBrush), typeof(MaterialColorWheel), new PropertyMetadata(new SolidColorBrush(Color.FromArgb(221, 0, 0, 0))));
+
+        /// <summary>
+        ///     Gets or sets the color of the center button font.
+        /// </summary>
+        /// <value>The color of the center button font.</value>
+        public SolidColorBrush CenterButtonFontColor
+        {
+            get { return (SolidColorBrush)GetValue(CenterButtonFontColorProperty); }
+            set { SetValue(CenterButtonFontColorProperty, value); }
+        }
         #endregion
 
         #region Template Properties
+        // ReSharper disable once InconsistentNaming
+        private const string PART_DarkLightButton = "PART_DarkLightButton";
+        private Button _darkLightButton;
         // ReSharper disable InconsistentNaming
         private const string PART_CyanCanvas = "PART_CyanCanvas";
         private const string PART_TealCanvas = "PART_TealCanvas";
@@ -976,6 +1103,21 @@ namespace MaterialDesignAddon.Controls
         private Canvas _lightBluePolys;
         private Canvas _indigoPolys;
         private Canvas _pinkPolys;
+        /// <summary>
+        ///     Gets or sets the name of the primary color.
+        /// </summary>
+        /// <value>The name of the primary color.</value>
+        public string PrimaryName { get; set; }
+        /// <summary>
+        ///     Gets or sets the name of the accent color.
+        /// </summary>
+        /// <value>The name of the accent color.</value>
+        public string AccentName { get; set; }
+        /// <summary>
+        ///     Gets or sets a value indicating whether this instance is dark.
+        /// </summary>
+        /// <value><c>true</c> if this instance is dark; otherwise, <c>false</c>.</value>
+        public bool IsDark { get; set; }
         #endregion
     }
 }

@@ -8,6 +8,7 @@
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                             xmlns:vm="clr-namespace:MaterialColorWheelDemo"
                             Title="Material Color Wheel Demo"
+                            Background="{DynamicResource MaterialDesignPaper}"
                             Width="800"
                             Height="600"
                             mc:Ignorable="d">
@@ -25,7 +26,9 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <addon:MaterialColorWheel Stretch="Uniform"/>
+                        <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="10">
+                            <addon:MaterialColorWheel Stretch="Uniform"/>
+                        </materialDesign:Card>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,8">
                             <!-- Borrowed this from Material Design Demo app to show the color changes -->
                             <StackPanel Margin="0,12,0,0" Orientation="Horizontal">
