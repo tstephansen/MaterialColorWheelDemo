@@ -2,23 +2,19 @@
 <package>
     <metadata>
         <id>MaterialDesignAddon</id>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <title>Material Color Wheel Addon</title>
         <authors>Tim Stephansen</authors>
         <owners>Tim Stephansen</owners>
-        <!-- License and project URLs provide links for the gallery -->
         <licenseUrl>https://opensource.org/licenses/Apache-2.0</licenseUrl>
         <projectUrl>https://github.com/tstephansen/MaterialColorWheelDemo</projectUrl>
-        <!-- The icon is used in Visual Studio's package manager UI -->
-        <iconUrl>http://github.com/tstephansen/MaterialColorWheelDemo/ColorWheelIcon.PNG</iconUrl>
-        <!-- If true, this value prompts the user to accept the license when
-             installing the package. -->
+        <iconUrl>https://raw.githubusercontent.com/tstephansen/MaterialColorWheelDemo/master/ColorWheelIcon.PNG</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <releaseNotes>Added support for .NET 4.5</releaseNotes>
+        <releaseNotes>Added a button to switch between dark and light themes.</releaseNotes>
         <description>A color wheel for the Material Design in XAML Toolkit that is modeled after Google's Material Design Lite CSS Customizer.</description>
         <copyright>Copyright ©2017 Tim Stephansen</copyright>
         <!-- Tags appear in the gallery and can be used for tag searches -->
-        <tags>material design color wheel xaml</tags>
+        <tags>material design color wheel xaml theme google</tags>
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
             <dependency id="MaterialDesignColors" version="1.1.3" />
